@@ -23,7 +23,7 @@ sudo apt-get upgrade
 ```
 It's always good practice to update the OS before any development. 
 Next, we'll pip install some packages using pip/pip3
-*if you dont have pip/pip3 installed, use *```sudo apt install python3-pip```*for the Python3 and*```sudo apt install python-pip```*for Python2*
+*if you dont have pip/pip3 installed, use* ```sudo apt install python3-pip```*for the Python3 and*```sudo apt install python-pip```*for Python2*
 
 1. Install ```imutils``` using the following command:
 ```pip3 install --imutils```
@@ -203,7 +203,7 @@ Here is what the end product looks like (excuse the blurryness, I was using the 
 
 
 ![demo1](/demo_images/demo1.png)
-This image shows a bounding box around my subject (neighbor) intruding in my living room (watering my plants). It also displays the Room Status in the top left corner. 
+This image shows a bounding box around my subject (neighbor), in the bottom left corner of the frame, intruding in my living room (watering my plants). It also displays the Room Status in the top left corner. 
 
 
 ![demo2](/demo_images/demo4.png)

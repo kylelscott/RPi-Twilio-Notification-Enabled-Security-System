@@ -201,10 +201,16 @@ The project currently works to send SMS notifications to a user's mobile device 
 
 Here is what the end product looks like (excuse the blurryness, I was using scrot off of a low-resolution TeamViewer session). The Raspberry PI camera is shown in the upper left corner of the picture, and another live feed taken from an XBOX Kinect V1 sensor is seen capturing a different vantage of the room in the horizontal window. 
 
-This image shows a bounding box around my subject (neighbor) intruding in my living room (watering my plants). It also displays the Room Status in the top left corner. 
-This image shows the updated room status when the intruder left my PiCamera's Field of View, as they went to the bathroom.
 
-This image shows a screenhot of the Twilio Notifications sent to my phone as the status of the room changed from "No Intruders" to "Occupied". Messages are sent as long as motion is detected in the room for the predefined duration.
+![demo1](/demo_images/demo1.png)
+This image shows a bounding box around my subject (neighbor) intruding in my living room (watering my plants). It also displays the Room Status in the top left corner. 
+
+
+![demo2](/demo_images/demo4.png)
+
+This image shows the updated room status when the intruder left my PiCamera's Field of View, as they went to the bathroom. The status of the room is updated in the top left corner of the window from "Occupied" to "No Intruders"
+
+**Demo 7** in the *demo_images* folder shows a screenhot of the Twilio Notifications sent to my phone as the status of the room changed from "No Intruders" to "Occupied". Messages are sent as long as motion is detected in the room for the predefined duration.
 
 
 ## TO DO

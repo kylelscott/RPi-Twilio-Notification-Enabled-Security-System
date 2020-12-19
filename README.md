@@ -196,6 +196,11 @@ if conf["show_video"]:
     rawCapture.truncate(0)
 ```
 
+## Running the Project
+To run the project, type the following command in the main directory of the project:
+
+```python 3 pi_survellance.py --conf conf.json```
+
 ## Current State of the Project
 The project currently works to send SMS notifications to a user's mobile device if motion is detected within the camera's field of view. Dropbox functionality can also be enabled with the required account information, however it has not been tested. 
 

@@ -51,9 +51,9 @@ motionCounter = 0
 print("Up and Running")
 message = client.messages \
                 .create(
-                     body="Cameras initialized and detecting, KAL-EL.",
-                     from_='+18289444398',
-                     to='+19375812099'
+                     body="<INSERT YOUR CUSTOM INITIALIZING MESSAGE HERE>",
+                     from_="<INSERT YOUR TWILIO PHONE NUMBER HERE>",
+                     to="<INSERT YOUR/THE PERSON TO BE NOTIFIED PHONE NUMBER HERE>"
                  )
 print(message.sid)
 
@@ -86,14 +86,14 @@ for f in camera.capture_continuous(rawCapture,
     
     #threshold delta image, dilate threshold image, and find contours on threshold
     threshold = cv2.threshold(frameDelta,conf["delta_thresh"], 255,cv2.THRESH_BINARY)[1]
-    #threshold = cv2.adaptiveThreshold(frameDelta, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY,11,2)
     threshold = cv2.dilate(threshold, None, iterations=2)
-    #cnts = cv2.findContours(threshold.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[-2]
     cnts = cv2.findContours(threshold.copy(), cv2.RETR_EXTERNAL,
                             cv2.CHAIN_APPROX_SIMPLE)
     cnts = imutils.grab_contours(cnts)
+    
     # loop over the contours
     for c in cnts:
+        
         # if the contour is too small, ignore it
         if cv2.contourArea(c) < conf["min_area"]:
             continue        
@@ -111,14 +111,15 @@ for f in camera.capture_continuous(rawCapture,
     
     
     if text == "Occupied":
+        
         #check to see if enough time has passed btw uploads
         if (timestamp - lastUploaded).seconds >= conf["min_upload_seconds"]:
             motionCounter += 1
             
             #check to see if number of frames with consistent motion is high enough
             if motionCounter >= conf["min_motion_frames"]:
-                #check to see if dropbox should be used
                 
+                #check to see if dropbox should be used
                 #if so do the following
                 if conf["use_dropbox"]:
                     t = TempImage()
@@ -133,13 +134,11 @@ for f in camera.capture_continuous(rawCapture,
                 elif conf["use_twilio"]:
                     message = client.messages \
                 .create(
-                     body="There is a guest in the Fortress, KAL-EL.",
-                     from_='+18289444398',
-                     to='+19375812099'
+                     body="<INSERT CUSTOM ALERT MESSAGE HERE>",
+                     from_="<INSERT TWILIO PHONE NUMBER HERE>",
+                     to="<INSERT RECIPIENT'S PHONE NUMBER HERE>"
                  )
                     print(message.sid)
-                    
-                
                 lastUploaded = timestamp
                 motionCounter = 0
     else:

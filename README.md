@@ -29,6 +29,7 @@ Next, we'll pip install some packages using pip/pip3
 ```pip3 install --imutils```
 2. Install OpenCV using the following command:
 ```pip3 install opencv-contrib-python```
+
 ***Note:*** *At the time of writing, I was using verison 4.4.0. The version can be specified using a command like this:*```pip3 install opencv-contrib-python == 4.4.0```. *To check the version number, run* ```python3``` *in the terminal followed by* ```import cv2``` *and* ```print(cv2.__version__)```
 
 We will also need to set up a Twilio account to receive the following:
@@ -48,7 +49,7 @@ The project is set up with the following folder architecture
     |---tempimage.py
 ```
 
-The main code for the project will be inside of the ```pi_surveillance.py file```. The ```conf.json``` will be used to define some variables instead of hard-coding them into the ```pi_surveillance.py``` file or using a command line parser. Pyimageserarch is a folder that will house the ```tempimage``` class which will store images before they are send to dropbox (coming soon). 
+The main code for the project will be inside of the ```pi_surveillance.py``` file. The ```conf.json``` will be used to define some variables instead of hard-coding them into the ```pi_surveillance.py``` file or using a command line parser. Pyimageserarch is a folder that will house the ```tempimage``` class which will store images before they are send to dropbox (coming soon). 
 
 To start off we import our dependencies. 
 ```
@@ -195,11 +196,10 @@ if conf["show_video"]:
     rawCapture.truncate(0)
 ```
 
-
 ## Current State of the Project
 The project currently works to send SMS notifications to a user's mobile device if motion is detected within the camera's field of view. Dropbox functionality can also be enabled with the required account information, however it has not been tested. 
 
-Here is what the end product looks like (excuse the blurryness, I was using scrot off of a low-resolution TeamViewer session). The Raspberry PI camera is shown in the upper left corner of the picture, and another live feed taken from an XBOX Kinect V1 sensor is seen capturing a different vantage of the room in the horizontal window. 
+Here is what the end product looks like (excuse the blurryness, I was using the "scrot" command off of a low-resolution TeamViewer session). The Raspberry PI camera is shown in the upper left corner of the picture, and another live feed taken from an XBOX Kinect V1 sensor is seen capturing a different vantage of the room in the horizontal window. 
 
 
 ![demo1](/demo_images/demo1.png)
@@ -208,7 +208,7 @@ This image shows a bounding box around my subject (neighbor) intruding in my liv
 
 ![demo2](/demo_images/demo4.png)
 
-This image shows the updated room status when the intruder left my PiCamera's Field of View, as they went to the bathroom. The status of the room is updated in the top left corner of the window from "Occupied" to "No Intruders"
+This image shows the updated room status when the intruder left my PiCamera's Field of View (as they went to the bathroom). The status of the room is updated in the top left corner of the window from "Occupied" to "No Intruders".
 
 **Demo 7** in the *demo_images* folder shows a screenhot of the Twilio Notifications sent to my phone as the status of the room changed from "No Intruders" to "Occupied". Messages are sent as long as motion is detected in the room for the predefined duration.
 
